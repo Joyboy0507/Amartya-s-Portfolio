@@ -337,56 +337,6 @@
   .proj-desc { color: var(--text-muted); font-size: 0.95rem; max-width: 60ch; }
   .proj-status { margin-top: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--text-faint); }
 
-  /* ADD CARD (shared: projects + achievements) */
-  .add-card {
-    border: 1px dashed var(--border);
-    background: transparent;
-    border-radius: 6px;
-    align-items: center;
-    gap: 12px;
-    min-height: 64px;
-    padding: 0 28px;
-    color: var(--text-faint);
-    font-family: var(--font-mono);
-    font-size: 13px;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    display: none; /* hidden until owner edit mode is enabled */
-  }
-  body.edit-mode .add-card { display: flex; }
-
-  .edit-mode-tag {
-    display: none;
-    position: fixed;
-    bottom: 18px;
-    right: 18px;
-    background: var(--accent);
-    color: rgb(248,244,244);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    z-index: 50;
-    box-shadow: 0 8px 20px var(--shadow);
-  }
-  body.edit-mode .edit-mode-tag { display: block; }
-  .add-card:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-  .add-card .plus {
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    border: 1px solid currentColor;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    flex-shrink: 0;
-    line-height: 1;
-  }
-
   /* ACHIEVEMENTS */
   .achievements { display: flex; flex-direction: column; gap: 16px; }
   .ach-card {
@@ -419,59 +369,6 @@
     margin-bottom: 16px;
   }
 
-  /* MODAL */
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    z-index: 100;
-  }
-  .modal-overlay.open { display: flex; }
-  .modal {
-    background: var(--surface-raised);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    width: 100%;
-    max-width: 440px;
-    padding: 28px;
-  }
-  .modal h3 {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1.15rem;
-    margin-bottom: 20px;
-  }
-  .field { margin-bottom: 16px; }
-  .field label {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-  }
-  .field input, .field textarea {
-    width: 100%;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 10px 12px;
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 0.92rem;
-    resize: vertical;
-  }
-  .field textarea { min-height: 70px; }
-  .modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 8px;
-  }
-
   /* CONTACT */
   .contact-inner {
     display: flex;
@@ -501,15 +398,14 @@
     .focus-row { grid-template-columns: 1fr; gap: 6px; }
     .contact-inner { flex-direction: column; align-items: flex-start; }
   }
-  /* Container to keep picture and name side-by-side */
-.profile-inline {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  vertical-align: middle;
-}
 
-/* Styled terminal avatar base */
+  .profile-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    vertical-align: middle;
+  }
+
   .terminal-avatar {
     width: 80px;
     height: 80px;
@@ -524,7 +420,6 @@
     transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
   }
 
-  /* Interactive zoom effect on hover & focus */
   .terminal-avatar:hover,
   .terminal-avatar:focus {
     transform: scale(2);
@@ -533,53 +428,52 @@
     outline: none;
   }
 
-  /* Prevents parent terminal containers from cutting off the zoomed image */
   .terminal,
   .terminal-body,
   #termBody,
   .line {
     overflow: visible !important;
   }
+
   .repo-link {
-  display: inline-block;
-  margin-top: 12px;
-  font-size: 0.85rem;
-  color: #00ff66; /* Terminal green accent (or change to your site's accent color) */
-  text-decoration: none;
-  font-family: monospace;
-  transition: opacity 0.2s ease;
-}
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: #00ff66;
+    text-decoration: none;
+    font-family: monospace;
+    transition: opacity 0.2s ease;
+  }
 
-.repo-link:hover {
-  opacity: 0.8;
-  text-decoration: underline;
-}
+  .repo-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
   .skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
-}
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
 
-.tag {
-  font-family: monospace;
-  font-size: 0.75rem;
-  padding: 4px 10px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-  color: #00ff66; /* Your terminal accent color */
-}
+  .tag {
+    font-family: monospace;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    color: #00ff66;
+  }
 
-.tag:hover {
-  border-color: #00ff66;
-  background-color: rgba(0, 255, 102, 0.1);
-}
+  .tag:hover {
+    border-color: #00ff66;
+    background-color: rgba(0, 255, 102, 0.1);
+  }
 </style>
 </head>
 <body>
-
-
 
 <nav>
   <div class="wrap">
@@ -639,39 +533,47 @@
 </section>
 
 <section id="focus">
-  <h2>Areas of Focus</h2>
-
-  <div class="focus-grid">
-    <!-- Category 1 -->
-    <div class="focus-card">
-      <h3>Systems & Linux</h3>
-      <p>Operating system fundamentals, shell scripting, and environment administration.</p>
-      <div class="skill-tags">
-        <span class="tag">Linux / Ubuntu</span>
-        <span class="tag">Bash</span>
-        <span class="tag">Git & GitHub</span>
-      </div>
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Areas of Focus</h2>
+      <div class="section-num">02</div>
     </div>
 
-    <!-- Category 2 -->
-    <div class="focus-card">
-      <h3>Network Security</h3>
-      <p>Analyzing network traffic, inspecting protocols, and understanding defensive fundamentals.</p>
-      <div class="skill-tags">
-        <span class="tag">Wireshark</span>
-        <span class="tag">Nmap</span>
-        <span class="tag">TCP/IP</span>
+    <div class="focus-list">
+      <div class="focus-row">
+        <div class="f-name">Systems & Linux</div>
+        <div>
+          <p class="f-desc">Operating system fundamentals, shell scripting, and environment administration.</p>
+          <div class="skill-tags">
+            <span class="tag">Linux / Ubuntu</span>
+            <span class="tag">Bash</span>
+            <span class="tag">Git & GitHub</span>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Category 3 -->
-    <div class="focus-card">
-      <h3>Development & Automation</h3>
-      <p>Building functional web applications, security scripts, and tools.</p>
-      <div class="skill-tags">
-        <span class="tag">Python</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">HTML5 / CSS3</span>
+      <div class="focus-row">
+        <div class="f-name">Network Security</div>
+        <div>
+          <p class="f-desc">Analyzing network traffic, inspecting protocols, and understanding defensive fundamentals.</p>
+          <div class="skill-tags">
+            <span class="tag">Wireshark</span>
+            <span class="tag">Nmap</span>
+            <span class="tag">TCP/IP</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="focus-row">
+        <div class="f-name">Development & Automation</div>
+        <div>
+          <p class="f-desc">Building functional web applications, security scripts, and tools.</p>
+          <div class="skill-tags">
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML5 / CSS3</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -695,8 +597,8 @@
         </p>
         <div class="proj-status">Status: Live · v1</div>
         <a href="https://github.com/amartya0507/Amartya-s-Portfolio" target="_blank" rel="noopener noreferrer" class="repo-link">
-    View Code on GitHub →
-  </a>
+          View Code on GitHub →
+        </a>
       </div>
     </div>
   </div>
@@ -718,46 +620,17 @@
     <div class="contact-line">Open to conversations about security, systems, and student work.</div>
     <div class="contact-links">
       <a href="mailto:camartya64@gmail.com" class="btn btn-primary">Email</a>
-      <a href="https://github.com/amartya0507" class="btn btn-ghost">GitHub</a>
-      <a href="https://www.linkedin.com/in/amartya-chakraborty-10837939b/" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/amartya0507" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/amartya-chakraborty-10837939b/" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
   </div>
 </section>
-
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <h3 id="modalTitle">Add project</h3>
-    <div class="field">
-      <label id="modalLabel1" for="modalInput1">Title</label>
-      <input type="text" id="modalInput1" placeholder="e.g. Packet sniffer in Python">
-    </div>
-    <div class="field">
-      <label id="modalLabel2" for="modalInput2">Description</label>
-      <textarea id="modalInput2" placeholder="A short line about what it does and what you learned."></textarea>
-    </div>
-    <div class="field" id="modalField3">
-      <label id="modalLabel3" for="modalInput3">Status</label>
-      <input type="text" id="modalInput3" placeholder="e.g. in progress, live, coursework">
-    </div>
-    <div class="modal-actions">
-      <button class="btn btn-ghost" id="modalCancel">Cancel</button>
-      <button class="btn btn-primary" id="modalSave">Save</button>
-    </div>
-  </div>
-</div>
 
 <footer>
   built by Amartya Chakraborty — The record starts here
 </footer>
 
 <script>
-  // Owner-only edit mode: only activates with ?edit in the URL.
-  // Regular visitors never see the add-project / add-achievement controls.
-  const params = new URLSearchParams(window.location.search);
-  if (params.has('edit')) {
-    document.body.classList.add('edit-mode');
-  }
-
   // Theme toggle
   const root = document.documentElement;
   const toggle = document.getElementById('themeToggle');
@@ -769,7 +642,7 @@
     label.textContent = next;
   });
 
-  // Terminal type-on effect (runs once)
+  // Terminal type-on effect
   const lines = [
     { prompt: '> Who am I', value: 'Amartya Chakraborty' },
     { prompt: '> Field', value: 'BSc Computer Science, BRAC University' },
@@ -781,10 +654,10 @@
   const body = document.getElementById('termBody');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-function renderStatic() {
+  function renderStatic() {
     body.innerHTML = lines.map(l => {
       if (l.prompt === '> Who am I') {
-        return `<div class="line"><span class="prompt">${l.prompt}</span><br><span class="val profile-inline"><img src="your-photo.jpg" alt="Amartya Chakraborty" class="terminal-avatar" width="80" height="80" tabindex="0"> ${l.value}</span></div>`;
+        return `<div class="line"><span class="prompt">${l.prompt}</span><br><span class="val profile-inline"><img src="me.jpg" alt="Amartya Chakraborty" class="terminal-avatar" width="80" height="80" tabindex="0"> ${l.value}</span></div>`;
       }
       return `<div class="line"><span class="prompt">${l.prompt}</span><br><span class="val">${l.value}</span></div>`;
     }).join('');
@@ -812,12 +685,12 @@ function renderStatic() {
       if (l.prompt === '> Who am I') {
         v.classList.add('profile-inline');
         const img = document.createElement('img');
-        img.src = 'me.jpg'; // Replace with your image file path
+        img.src = 'me.jpg';
         img.alt = 'Amartya Chakraborty';
         img.className = 'terminal-avatar';
         img.width = 80;
         img.height = 80;
-        img.tabIndex = 0; // Enables tap-to-zoom focus on mobile devices
+        img.tabIndex = 0;
         v.appendChild(img);
         
         const textNode = document.createTextNode(' ');
@@ -845,102 +718,6 @@ function renderStatic() {
   } else {
     typeLines();
   }
-
-  // ---- Add project / achievement modal ----
-  let entryCount = 1; // "Entry 01" already used by the site itself
-  let achievementCount = 0;
-  let modalMode = null; // 'project' | 'achievement'
-
-  const overlay = document.getElementById('modalOverlay');
-  const modalTitle = document.getElementById('modalTitle');
-  const label1 = document.getElementById('modalLabel1');
-  const label2 = document.getElementById('modalLabel2');
-  const field3 = document.getElementById('modalField3');
-  const label3 = document.getElementById('modalLabel3');
-  const input1 = document.getElementById('modalInput1');
-  const input2 = document.getElementById('modalInput2');
-  const input3 = document.getElementById('modalInput3');
-
-  function openModal(mode) {
-    modalMode = mode;
-    input1.value = '';
-    input2.value = '';
-    input3.value = '';
-    if (mode === 'project') {
-      modalTitle.textContent = 'Add project';
-      label1.textContent = 'Title';
-      input1.placeholder = 'e.g. Packet sniffer in Python';
-      label2.textContent = 'Description';
-      input2.placeholder = 'A short line about what it does and what you learned.';
-      field3.style.display = '';
-      label3.textContent = 'Status';
-      input3.placeholder = 'e.g. in progress, live, coursework';
-    } else {
-      modalTitle.textContent = 'Add achievement';
-      label1.textContent = 'Title';
-      input1.placeholder = 'e.g. Runner-up, university CTF';
-      label2.textContent = 'Description';
-      input2.placeholder = 'A short line about what it was and why it mattered.';
-      field3.style.display = '';
-      label3.textContent = 'Date';
-      input3.placeholder = 'e.g. Sept 2026';
-    }
-    overlay.classList.add('open');
-    input1.focus();
-  }
-
-  function closeModal() {
-    overlay.classList.remove('open');
-    modalMode = null;
-  }
-
-  document.getElementById('addProjectBtn').addEventListener('click', () => openModal('project'));
-  document.getElementById('addAchievementBtn').addEventListener('click', () => openModal('achievement'));
-  document.getElementById('modalCancel').addEventListener('click', closeModal);
-  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
-
-  function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-  }
-
-  document.getElementById('modalSave').addEventListener('click', () => {
-    const title = input1.value.trim();
-    const desc = input2.value.trim();
-    const extra = input3.value.trim();
-    if (!title) { input1.focus(); return; }
-
-    if (modalMode === 'project') {
-      entryCount++;
-      const num = String(entryCount).padStart(2, '0');
-      const card = document.createElement('div');
-      card.className = 'proj-card';
-      card.innerHTML = `
-        <div class="proj-head">
-          <span class="proj-id">Entry ${num}</span>
-          <span class="proj-title">${escapeHtml(title)}</span>
-        </div>
-        ${desc ? `<p class="proj-desc">${escapeHtml(desc)}</p>` : ''}
-        ${extra ? `<div class="proj-status">status: ${escapeHtml(extra)}</div>` : ''}
-      `;
-      document.querySelector('.projects').appendChild(card);
-    } else {
-      achievementCount++;
-      document.getElementById('achEmptyNote').style.display = 'none';
-      const card = document.createElement('div');
-      card.className = 'ach-card';
-      card.innerHTML = `
-        <div class="ach-date">${extra ? escapeHtml(extra) : ''}</div>
-        <div>
-          <div class="ach-title">${escapeHtml(title)}</div>
-          ${desc ? `<div class="ach-desc">${escapeHtml(desc)}</div>` : ''}
-        </div>
-      `;
-      document.getElementById('achievementsList').appendChild(card);
-    }
-    closeModal();
-  });
 </script>
 
 </body>
