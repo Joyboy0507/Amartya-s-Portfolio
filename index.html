@@ -554,6 +554,27 @@
   opacity: 0.8;
   text-decoration: underline;
 }
+  .skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.tag {
+  font-family: monospace;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  color: #00ff66; /* Your terminal accent color */
+}
+
+.tag:hover {
+  border-color: #00ff66;
+  background-color: rgba(0, 255, 102, 0.1);
+}
 </style>
 </head>
 <body>
@@ -618,27 +639,39 @@
 </section>
 
 <section id="focus">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 class="section-title">Areas of focus</h2>
-      <div class="section-num">02</div>
+  <h2>Areas of Focus</h2>
+
+  <div class="focus-grid">
+    <!-- Category 1 -->
+    <div class="focus-card">
+      <h3>Systems & Linux</h3>
+      <p>Operating system fundamentals, shell scripting, and environment administration.</p>
+      <div class="skill-tags">
+        <span class="tag">Linux / Ubuntu</span>
+        <span class="tag">Bash</span>
+        <span class="tag">Git & GitHub</span>
+      </div>
     </div>
-    <div class="focus-list">
-      <div class="focus-row">
-        <div class="f-name">Network security</div>
-        <div class="f-desc">Understanding how systems communicate, and where those channels break down.</div>
+
+    <!-- Category 2 -->
+    <div class="focus-card">
+      <h3>Network Security</h3>
+      <p>Analyzing network traffic, inspecting protocols, and understanding defensive fundamentals.</p>
+      <div class="skill-tags">
+        <span class="tag">Wireshark</span>
+        <span class="tag">Nmap</span>
+        <span class="tag">TCP/IP</span>
       </div>
-      <div class="focus-row">
-        <div class="f-name">Ethical hacking</div>
-        <div class="f-desc">Learning offensive techniques to understand defense from the inside out.</div>
-      </div>
-      <div class="focus-row">
-        <div class="f-name">Systems & Linux</div>
-        <div class="f-desc">Comfort with the environments most security tooling actually runs in.</div>
-      </div>
-      <div class="focus-row">
-        <div class="f-name">Applied cryptography</div>
-        <div class="f-desc">The math and reasoning behind keeping data confidential and verifiable.</div>
+    </div>
+
+    <!-- Category 3 -->
+    <div class="focus-card">
+      <h3>Development & Automation</h3>
+      <p>Building functional web applications, security scripts, and tools.</p>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">HTML5 / CSS3</span>
       </div>
     </div>
   </div>
