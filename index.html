@@ -500,6 +500,24 @@
     .focus-row { grid-template-columns: 1fr; gap: 6px; }
     .contact-inner { flex-direction: column; align-items: flex-start; }
   }
+  /* Container to keep picture and name side-by-side */
+.profile-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  vertical-align: middle;
+}
+
+/* Styled terminal avatar */
+.terminal-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--accent);
+  display: inline-block;
+  vertical-align: middle;
+}
 </style>
 </head>
 <body>
@@ -698,9 +716,12 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function renderStatic() {
-    body.innerHTML = lines.map(l =>
-      `<div class="line"><span class="prompt">${l.prompt}</span><br><span class="val">${l.value}</span></div>`
-    ).join('');
+    body.innerHTML = lines.map(l => {
+      if (l.prompt === '> Who am I') {
+        return `<div class="line"><span class="prompt">${l.prompt}</span><br><span class="val profile-inline"><img src="your-photo.jpg" alt="Amartya Chakraborty" class="terminal-avatar" width="80" height="80"> ${l.value}</span></div>`;
+      }
+      return `<div class="line"><span class="prompt">${l.prompt}</span><br><span class="val">${l.value}</span></div>`;
+    }).join('');
   }
 
   async function typeLines() {
@@ -711,18 +732,40 @@
       p.className = 'prompt';
       row.appendChild(p);
       body.appendChild(row);
+
       for (const ch of l.prompt) {
         p.textContent += ch;
         await new Promise(r => setTimeout(r, 18));
       }
+
       row.appendChild(document.createElement('br'));
       const v = document.createElement('span');
       v.className = 'val';
       row.appendChild(v);
-      for (const ch of l.value) {
-        v.textContent += ch;
-        await new Promise(r => setTimeout(r, 12));
+
+      if (l.prompt === '> Who am I') {
+        v.classList.add('profile-inline');
+        const img = document.createElement('img');
+        img.src = 'me.jpg'; // Path to your photo file
+        img.alt = 'Amartya Chakraborty';
+        img.className = 'terminal-avatar';
+        img.width = 80;
+        img.height = 80;
+        v.appendChild(img);
+        
+        const textNode = document.createTextNode(' ');
+        v.appendChild(textNode);
+        for (const ch of l.value) {
+          textNode.textContent += ch;
+          await new Promise(r => setTimeout(r, 12));
+        }
+      } else {
+        for (const ch of l.value) {
+          v.textContent += ch;
+          await new Promise(r => setTimeout(r, 12));
+        }
       }
+
       await new Promise(r => setTimeout(r, 150));
     }
     const cursor = document.createElement('span');
