@@ -508,16 +508,37 @@
   vertical-align: middle;
 }
 
-/* Styled terminal avatar */
-.terminal-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1.5px solid var(--accent);
-  display: inline-block;
-  vertical-align: middle;
-}
+/* Styled terminal avatar base */
+  .terminal-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--accent);
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  }
+
+  /* Interactive zoom effect on hover & focus */
+  .terminal-avatar:hover,
+  .terminal-avatar:focus {
+    transform: scale(1.8);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    outline: none;
+  }
+
+  /* Prevents parent terminal containers from cutting off the zoomed image */
+  .terminal,
+  .terminal-body,
+  #termBody,
+  .line {
+    overflow: visible !important;
+  }
 </style>
 </head>
 <body>
@@ -715,10 +736,10 @@
   const body = document.getElementById('termBody');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function renderStatic() {
+function renderStatic() {
     body.innerHTML = lines.map(l => {
       if (l.prompt === '> Who am I') {
-        return `<div class="line"><span class="prompt">${l.prompt}</span><br><span class="val profile-inline"><img src="your-photo.jpg" alt="Amartya Chakraborty" class="terminal-avatar" width="80" height="80"> ${l.value}</span></div>`;
+        return `<div class="line"><span class="prompt">${l.prompt}</span><br><span class="val profile-inline"><img src="your-photo.jpg" alt="Amartya Chakraborty" class="terminal-avatar" width="80" height="80" tabindex="0"> ${l.value}</span></div>`;
       }
       return `<div class="line"><span class="prompt">${l.prompt}</span><br><span class="val">${l.value}</span></div>`;
     }).join('');
@@ -746,11 +767,12 @@
       if (l.prompt === '> Who am I') {
         v.classList.add('profile-inline');
         const img = document.createElement('img');
-        img.src = 'me.jpg'; // Path to your photo file
+        img.src = 'me.jpg'; // Replace with your image file path
         img.alt = 'Amartya Chakraborty';
         img.className = 'terminal-avatar';
         img.width = 80;
         img.height = 80;
+        img.tabIndex = 0; // Enables tap-to-zoom focus on mobile devices
         v.appendChild(img);
         
         const textNode = document.createTextNode(' ');
