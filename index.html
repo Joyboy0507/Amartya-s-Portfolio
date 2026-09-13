@@ -439,7 +439,7 @@
     display: inline-block;
     margin-top: 12px;
     font-size: 0.85rem;
-    color: #00ff66;
+    color: var(--accent); /* Changes the green text to match your site's red accent */
     text-decoration: none;
     font-family: monospace;
     transition: opacity 0.2s ease;
@@ -460,11 +460,12 @@
   .tag {
     font-family: monospace;
     font-size: 0.75rem;
-    padding: 4px 10px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 6px 12px; /* Slightly increased padding for that filled block look */
+    background-color: var(--surface-raised); /* Gives it that solid gray background */
+    border: none; /* Removes the border line completely */
     border-radius: 4px;
-    color: #00ff66;
+    color: var(--text-muted); /* Neutral light gray text instead of green */
+  }
   }
 
   .tag:hover {
