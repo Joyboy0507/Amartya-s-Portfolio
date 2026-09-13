@@ -221,7 +221,6 @@
     padding: 6px;
     box-shadow: 0 20px 40px var(--shadow);
   }
-  /* Tech corner target marks inspired by the mockup */
   .photo-frame::before, .photo-frame::after {
     content: '';
     position: absolute;
@@ -374,9 +373,13 @@
     margin-top: 6px;
     color: var(--text-muted);
   }
-  .status-dot {
+  .status-dot-ongoing {
     width: 6px; height: 6px; border-radius: 50%;
     background: #f59e0b;
+  }
+  .status-dot-completed {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #10b981;
   }
 
   /* AREAS OF FOCUS */
@@ -496,7 +499,7 @@
   }
   .op-link:hover { text-decoration: underline; }
 
-  /* LEARNING JOURNEY (AS MATCHED IN THE MOCKUP) */
+  /* LEARNING JOURNEY */
   .journey-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -624,6 +627,7 @@
             <div class="profile-card-tag">Higher Secondary Certificate</div>
             <div class="profile-card-title">Magura Govt. HSS College</div>
             <div class="profile-card-desc">Completed foundational secondary studies establishing core analytical skills.</div>
+            <div class="status-tag"><span class="status-dot-completed"></span> Completed</div>
           </div>
         </div>
         <div class="profile-meta">2023</div>
@@ -638,7 +642,7 @@
             <div class="profile-card-tag">Undergraduate Degree</div>
             <div class="profile-card-title">BRAC University</div>
             <div class="profile-card-desc">BSc in Computer Science.</div>
-            <div class="status-tag"><span class="status-dot"></span> Ongoing</div>
+            <div class="status-tag"><span class="status-dot-ongoing"></span> Ongoing</div>
           </div>
         </div>
         <div class="profile-meta">2026 – Present</div>
