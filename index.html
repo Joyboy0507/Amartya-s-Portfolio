@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amartya Chakraborty // Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/jpeg" href="me.jpg">
+<style>
+  :root {
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    --accent: rgb(230, 46, 26);
+    --accent-dim: rgb(196, 36, 19);
+
+    --radius: 3px;
+  }
+
+  html[data-theme="dark"] {
+    --bg: rgb(26, 25, 25);
+    --surface: rgb(35, 33, 33);
+    --surface-raised: rgb(44, 41, 41);
+    --border: rgb(60, 56, 56);
+    --text: rgb(248, 244, 244);
+    --text-muted: rgb(180, 174, 174);
+    --text-faint: rgb(130, 124, 124);
+    --shadow: rgba(0,0,0,0.45);
+  }
+
+  html[data-theme="light"] {
+    --bg: rgb(248, 244, 244);
+    --surface: #ffffff;
+    --surface-raised: #f2ede9;
+    --border: rgb(220, 212, 212);
+    --text: rgb(45, 43, 43);
+    --text-muted: rgb(105, 99, 99);
+    --text-faint: rgb(150, 144, 144);
+    --shadow: rgba(45,43,43,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  ::selection { background: var(--accent); color: rgb(248, 244, 244); }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .nav-mark {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+  .nav-mark strong { color: var(--text); font-weight: 500; }
+
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 8px 4px 12px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .theme-toggle .pill {
+    width: 34px;
+    height: 20px;
+    border-radius: 999px;
+    background: var(--border);
+    position: relative;
+    transition: background 0.25s ease;
+  }
+  .theme-toggle .pill::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: transform 0.25s ease;
+  }
+  html[data-theme="light"] .theme-toggle .pill::after {
+    transform: translateX(14px);
+  }
+
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+  }
+
+  /* HERO */
+  .hero {
+    padding: 64px 0 80px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr 1.1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 16px;
+    letter-spacing: 0.03em;
+  }
+  h1.name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 18px;
+  }
+  .hero-lede {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    max-width: 44ch;
+    margin-bottom: 28px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: rgb(248, 244, 244);
+  }
+  .btn-primary:hover { background: var(--accent-dim); }
+  .btn-ghost {
+    border-color: var(--border);
+    color: var(--text);
+    background: transparent;
+  }
+  .btn-ghost:hover { border-color: var(--text-muted); background: var(--surface); }
+
+  /* PHOTO FRAME COLUMN */
+  .hero-photo-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .photo-frame {
+    position: relative;
+    width: 280px;
+    height: 380px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px;
+    box-shadow: 0 20px 40px var(--shadow);
+  }
+  /* Tech corner target marks inspired by the mockup */
+  .photo-frame::before, .photo-frame::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: var(--accent);
+    border-style: solid;
+    pointer-events: none;
+  }
+  .photo-frame::before {
+    top: -4px; left: -4px;
+    border-width: 2px 0 0 2px;
+  }
+  .photo-frame::after {
+    bottom: -4px; right: -4px;
+    border-width: 0 2px 2px 0;
+  }
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: grayscale(15%) contrast(1.05);
+  }
+
+  /* STATUS PANEL COLUMN */
+  .hero-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 20px 40px var(--shadow);
+    overflow: hidden;
+    height: 100%;
+  }
+  .hero-card-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-card-bar span {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--border);
+  }
+  .hero-card-bar .label {
+    margin-left: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .hero-card-body {
+    padding: 24px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .hero-card-body p {
+    line-height: 1.6;
+  }
+  .hero-card-body strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-photo-wrapper { order: -1; }
+  }
+
+  /* SECTIONS GENERAL */
+  section { padding: 60px 0; border-top: 1px solid var(--border); }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 36px;
+  }
+  h2.section-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+
+  /* EDUCATION GRID */
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .profile-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .profile-card-left { display: flex; gap: 16px; align-items: flex-start; }
+  .edu-icon {
+    width: 40px; height: 40px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    flex-shrink: 0;
+  }
+  .profile-card-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .profile-card-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+  }
+  .profile-card-desc {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+  }
+  .profile-meta {
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+  }
+  .status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+    color: var(--text-muted);
+  }
+  .status-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #f59e0b;
+  }
+
+  /* AREAS OF FOCUS */
+  .arsenal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  .arsenal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+  }
+  .arsenal-category {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .arsenal-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+  .arsenal-desc {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 16px;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 5px 9px;
+    background-color: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-muted);
+  }
+
+  /* PROJECTS */
+  .ops-list { display: flex; flex-direction: column; gap: 20px; }
+  .op-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px;
+  }
+  .op-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 14px;
+  }
+  .op-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.15rem;
+  }
+  .op-status {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 3px 8px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-muted);
+  }
+  .op-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  @media(max-width: 760px) { .op-grid { grid-template-columns: 1fr; } }
+  .op-field-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .op-field-val {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .op-footer {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+  .op-link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .op-link:hover { text-decoration: underline; }
+
+  /* LEARNING JOURNEY (AS MATCHED IN THE MOCKUP) */
+  .journey-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+    position: relative;
+  }
+  .journey-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    letter-spacing: 0.05em;
+  }
+  .journey-content {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* CONNECT */
+  .connect-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .connect-line {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    max-width: 480px;
+  }
+  .connect-links { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  footer {
+    padding: 32px 0 48px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 760px) {
+    .profile-grid { grid-template-columns: 1fr; }
+    .connect-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-mark"><strong>Amartya</strong> Chakraborty</div>
+    <div class="nav-links">
+      <a href="#profile">PROFILE</a>
+      <a href="#focus">STACK</a>
+      <a href="#projects">OPS</a>
+      <a href="#journey">LOG</a>
+      <a href="#connect">CONNECT</a>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+      <span id="themeLabel">Dark</span>
+      <span class="pill"></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">> Computer Science Student · Aspiring Cybersecurity Professional</div>
+      <h1 class="name">Amartya Chakraborty</h1>
+      <p class="hero-lede">
+        I am just at the beginning of my computer science journey at BRAC University. I'm exploring technology, learning how software and systems work, and building toward a future in cybersecurity.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#connect" class="btn btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrapper">
+      <div class="photo-frame">
+        <img src="me.jpg" alt="Amartya Chakraborty">
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-bar">
+        <span></span><span></span><span></span>
+        <div class="label">CURRENT STATUS // BEGINNING MY CS JOURNEY</div>
+      </div>
+      <div class="hero-card-body">
+        <p><strong>Institution:</strong> BRAC University</p>
+        <p><strong>Program:</strong> BSc in Computer Science</p>
+        <p><strong>Status:</strong> Preparing for classes to begin and laying the groundwork for personal development and security exploration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="profile">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Education</h2>
+      <div class="section-num">01</div>
+    </div>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <div class="profile-card-left">
+          <div class="edu-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div>
+            <div class="profile-card-tag">Higher Secondary Certificate</div>
+            <div class="profile-card-title">Magura Govt. HSS College</div>
+            <div class="profile-card-desc">Completed foundational secondary studies establishing core analytical skills.</div>
+          </div>
+        </div>
+        <div class="profile-meta">2023</div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-card-left">
+          <div class="edu-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div>
+            <div class="profile-card-tag">Undergraduate Degree</div>
+            <div class="profile-card-title">BRAC University</div>
+            <div class="profile-card-desc">BSc in Computer Science. Beginning foundational coursework and computing studies.</div>
+            <div class="status-tag"><span class="status-dot"></span> Ongoing</div>
+          </div>
+        </div>
+        <div class="profile-meta">2026 – Present</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="focus">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Areas of Focus</h2>
+      <div class="section-num">02</div>
+    </div>
+
+    <div class="arsenal-grid">
+      <div class="arsenal-card">
+        <div class="arsenal-category">Systems & Environment</div>
+        <div class="arsenal-title">Systems & Linux</div>
+        <p class="arsenal-desc">Exploring command-line environments, shell tools, and version control foundations.</p>
+        <div class="skill-tags">
+          <span class="tag">Linux</span>
+          <span class="tag">Bash</span>
+          <span class="tag">Git & GitHub</span>
+        </div>
+      </div>
+
+      <div class="arsenal-card">
+        <div class="arsenal-category">Security Fundamentals</div>
+        <div class="arsenal-title">Network Security</div>
+        <p class="arsenal-desc">Beginning to look at network packets, protocol layouts, and security concepts.</p>
+        <div class="skill-tags">
+          <span class="tag">Wireshark</span>
+          <span class="tag">Nmap</span>
+          <span class="tag">TCP/IP</span>
+        </div>
+      </div>
+
+      <div class="arsenal-card">
+        <div class="arsenal-category">Development & Practice</div>
+        <div class="arsenal-title">Development & Automation</div>
+        <p class="arsenal-desc">Building basic scripts and client-facing web components.</p>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML5 / CSS3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Projects</h2>
+      <div class="section-num">03</div>
+    </div>
+
+    <div class="ops-list">
+      <div class="op-card">
+        <div class="op-header">
+          <div class="op-title">Dr. Rajashish Chakraborty Medical Portal</div>
+          <div class="op-status">LIVE DEPLOYMENT</div>
+        </div>
+
+        <div class="op-grid">
+          <div>
+            <div class="op-field-label">What I Built</div>
+            <div class="op-field-val">A clean, responsive web interface designed to help patients find professional medical information and schedule appointments easily.</div>
+          </div>
+          <div>
+            <div class="op-field-label">Technologies Used</div>
+            <div class="op-field-val">HTML5, CSS3, JavaScript</div>
+          </div>
+        </div>
+
+        <div class="op-footer">
+          <a href="https://github.com/amartya0507/DrRajashishChakraborty.git" target="_blank" rel="noopener noreferrer" class="op-link">GitHub Repository →</a>
+          <a href="https://amartya0507.github.io/DrRajashishChakraborty/" target="_blank" rel="noopener noreferrer" class="op-link">Live Demo →</a>
+        </div>
+      </div>
+
+      <div class="op-card">
+        <div class="op-header">
+          <div class="op-title">Personal Technical Portfolio</div>
+          <div class="op-status">ACTIVE</div>
+        </div>
+
+        <div class="op-grid">
+          <div>
+            <div class="op-field-label">What I Built</div>
+            <div class="op-field-val">A personal website to document my academic progress, share projects, and present a clean entry point into tech.</div>
+          </div>
+          <div>
+            <div class="op-field-label">Technologies Used</div>
+            <div class="op-field-val">HTML5, CSS Variables, JavaScript</div>
+          </div>
+        </div>
+
+        <div class="op-footer">
+          <a href="https://github.com/amartya0507/Amartya-s-Portfolio" target="_blank" rel="noopener noreferrer" class="op-link">GitHub Repository →</a>
+          <a href="https://amartya0507.github.io/Amartya-s-Portfolio/" target="_blank" rel="noopener noreferrer" class="op-link">Live Demo →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Learning Journey</h2>
+      <div class="section-num">04</div>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-header">
+        <span>LEARNING JOURNEY</span>
+        <span>01</span>
+      </div>
+      <div class="journey-content">
+        <span>This section will grow alongside my journey...</span>
+        <span style="color: var(--accent);">→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="connect">
+  <div class="wrap connect-inner">
+    <div class="connect-line">Get in touch for collaborations, discussions, or to follow my journey.</div>
+    <div class="connect-links">
+      <a href="mailto:camartya64@gmail.com" class="btn btn-primary">Email Me</a>
+      <a href="https://github.com/amartya0507" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/amartya-chakraborty-10837939b/" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AMARTYA CHAKRABORTY // THE BEGINNING
+</footer>
+
+<script>
+  // Theme toggle
+  const root = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+  const label = document.getElementById('themeLabel');
+
+  toggle.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    label.textContent = next === 'dark' ? 'Dark' : 'Light';
+  });
+</script>
+
+</body>
+</html>
