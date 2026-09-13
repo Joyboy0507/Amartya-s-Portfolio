@@ -439,7 +439,7 @@
     display: inline-block;
     margin-top: 12px;
     font-size: 0.85rem;
-    color: var(--accent); /* Changes the green text to match your site's red accent */
+    color: var(--accent);
     text-decoration: none;
     font-family: monospace;
     transition: opacity 0.2s ease;
@@ -458,19 +458,21 @@
   }
 
   .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-family: monospace;
     font-size: 0.75rem;
-    padding: 6px 12px; /* Slightly increased padding for that filled block look */
-    background-color: var(--surface-raised); /* Gives it that solid gray background */
-    border: none; /* Removes the border line completely */
+    padding: 6px 12px;
+    background-color: var(--surface-raised);
+    border: none;
     border-radius: 4px;
-    color: var(--text-muted); /* Neutral light gray text instead of green */
-  }
+    color: var(--text-muted);
+    transition: all 0.2s ease;
   }
 
   .tag:hover {
-    border-color: #00ff66;
-    background-color: rgba(0, 255, 102, 0.1);
+    color: var(--accent);
   }
 </style>
 </head>
@@ -546,9 +548,9 @@
         <div>
           <p class="f-desc">Operating system fundamentals, shell scripting, and environment administration.</p>
           <div class="skill-tags">
-            <span class="tag">Linux / Ubuntu</span>
-            <span class="tag">Bash</span>
-            <span class="tag">Git & GitHub</span>
+            <span class="tag"><svg role="img" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12zm5.894 16.923l-1.077 1.846c-.192.327-.615.423-.942.231l-2.077-1.23c-.712.519-1.538.827-2.385.923l-.327 2.385c-.058.365-.365.615-.731.615h-2.154c-.365 0-.673-.25-.731-.615l-.327-2.385c-.846-.096-1.673-.404-2.385-.923l-2.077 1.23c-.327.192-.75.096-.942-.231l-1.077-1.846c-.192-.327-.096-.75.231-.942l2.077-1.23c-.115-.808-.115-1.635 0-2.442l-2.077-1.23c-.327-.192-.423-.615-.231-.942l1.077-1.846c.192-.327.615-.423.942-.231l2.077 1.23c.712-.519 1.538-.827 2.385-.923l.327-2.385c.058-.365.365-.615.731-.615h2.154c.365 0 .673.25.731.615l.327 2.385c.846.096 1.673.404 2.385.923l2.077-1.23c.327-.192.75-.096.942.231l1.077 1.846c.192.327.096.75-.231.942l-2.077 1.23c.115.808.115 1.635 0 2.442l2.077 1.23c.327.192.423.615.231.942z"/></svg> Linux / Ubuntu</span>
+            <span class="tag"><svg role="img" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M11.526 0l-10.7 18.52c-.525.908.122 2.035 1.157 2.035h21.434c1.035 0 1.682-1.127 1.157-2.035l-10.7-18.52c-.526-.908-1.788-.908-2.314 0zm1.748 4.015l8.761 15.165h-17.522l8.761-15.165z"/></svg> Bash</span>
+            <span class="tag"><svg role="img" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> Git & GitHub</span>
           </div>
         </div>
       </div>
@@ -558,9 +560,9 @@
         <div>
           <p class="f-desc">Analyzing network traffic, inspecting protocols, and understanding defensive fundamentals.</p>
           <div class="skill-tags">
-            <span class="tag">Wireshark</span>
-            <span class="tag">Nmap</span>
-            <span class="tag">TCP/IP</span>
+            <span class="tag"><svg role="img" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm0 3.15c4.897 0 8.85 3.953 8.85 8.85 0 2.22-.823 4.251-2.181 5.795L10.355 9.274l7.104-7.104C16.25 3.974 14.219 3.15 12 3.15zm-8.85 8.85c0-2.22.823-4.251 2.181-5.795l8.795 8.795-7.104 7.104C3.974 20.026 3.15 17.995 3.15 15.775zm3.705 8.219l7.104-7.104 8.795 8.795c-1.544 1.358-3.575 2.181-5.795 2.181-4.897 0-8.85-3.953-8.85-8.85l-.004-.332-.25.504z"/></svg> Wireshark</span>
+            <span class="tag"><svg role="img" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm-1 3v6h6v2h-8v-8h2z"/></svg> Nmap</span>
+            <span class="tag"><svg role="img" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> TCP/IP</span>
           </div>
         </div>
       </div>
@@ -570,9 +572,9 @@
         <div>
           <p class="f-desc">Building functional web applications, security scripts, and tools.</p>
           <div class="skill-tags">
-            <span class="tag">Python</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">HTML5 / CSS3</span>
+            <span class="tag"><svg role="img" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M14.25 0h-4.5C8.01 0 6.5 1.51 6.5 3.75v3.75h4.75V9H3.75C1.51 9 0 10.51 0 12.75v4.5C0 19.49 1.51 21 3.75 21h3.75v-3.75H2.75V15h10.5c2.24 0 3.75-1.51 3.75-3.75v-4.5C17 4.51 15.49 0 14.25 0zM9 2.75a1 1 0 112 0 1 1 0 01-2 0zm5.75 18.5h4.5c2.24 0 3.75-1.51 3.75-3.75v-4.5c0-2.24-1.51-3.75-3.75-3.75h-4.75v-1.5h7.75c2.24 0 3.75 1.51 3.75 3.75v4.5c0 2.24-1.51 3.75-3.75 3.75h-3.75v3.75zM15 21.25a1 1 0 11-2 0 1 1 0 012 0z"/></svg> Python</span>
+            <span class="tag"><svg role="img" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M0 0h24v24H0V0zm22.022 18.157c-.55-1.127-1.767-1.928-3.528-2.42-1.464-.404-2.457-.677-2.98-1.02-.676-.445-.992-1.077-.992-1.892 0-1.074.52-1.848 1.562-2.321 1.041-.472 2.285-.505 3.733-.099 1.448.406 2.502 1.253 3.162 2.54l1.83-1.02c-.932-1.74-2.336-2.955-4.212-3.645-1.17-.432-2.433-.62-3.79-.564-1.737.07-3.15.545-4.238 1.424-1.088.88-1.632 2.062-1.632 3.548 0 1.22.378 2.215 1.134 2.983.756.768 1.837 1.34 3.242 1.714 1.405.373 2.37.643 2.894.809.722.228 1.21.6 1.464 1.116.255.516.383 1.144.383 1.884 0 1.184-.52 2.054-1.56 2.61-1.04.556-2.368.747-3.985.572-1.617-.175-2.935-.86-3.953-2.055l-1.674 1.348c1.378 1.63 3.155 2.673 5.33 3.13 1.05.222 2.105.32 3.165.293 2.036-.053 3.665-.562 4.887-1.528 1.222-.966 1.833-2.27 1.833-3.911 0-1.255-.382-2.284-1.146-3.087z"/></svg> JavaScript</span>
+            <span class="tag"><svg role="img" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L12.01 24l-8.585-2.437L1.5 0zm17.64 5.515H6.86l.09 1.17h12.09l-.27 2.76H7.22l.18 1.95h11.25l-.54 5.37-6.11 1.69-6.12-1.69-.36-3.87h2.07l.18 2.07 4.23 1.17 4.23-1.17.45-4.71H7.85l-.54-5.91h12.15l-.36-3.21z"/></svg> HTML5 / CSS3</span>
           </div>
         </div>
       </div>
