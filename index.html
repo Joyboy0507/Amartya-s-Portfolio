@@ -506,6 +506,7 @@
     border-radius: 6px;
     padding: 24px;
     position: relative;
+    margin-bottom: 20px;
   }
   .journey-header {
     display: flex;
@@ -525,6 +526,36 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  /* PROGRESS BAR STYLES */
+  .progress-bar-container {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+  }
+  .progress-track {
+    width: 100%;
+    height: 8px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .progress-fill {
+    width: 7.15%;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px 0 0 3px;
+  }
+  .progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    margin-top: 6px;
   }
 
   /* CONNECT */
@@ -760,12 +791,33 @@
 
     <div class="journey-card">
       <div class="journey-header">
-        <span>LEARNING JOURNEY</span>
+        <span>ACADEMIC MILESTONE</span>
         <span>01</span>
       </div>
       <div class="journey-content">
         <span>2026 — Starting BSc in Computer Science — Beginning my university journey at BRAC University and building a foundation in programming, systems, networking, and cybersecurity.</span>
         <span style="color: var(--accent);">→</span>
+      </div>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-header">
+        <span>CERTIFICATION TRACK</span>
+        <span>02</span>
+      </div>
+      <div class="journey-content">
+        <span>freeCodeCamp Responsive Web Design — Currently at 7.15% completion (111 / 1,552 steps), building a hands-on foundation in modern HTML, CSS, and layout systems.</span>
+        <span style="color: var(--accent);">→</span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-track">
+          <div class="progress-fill"></div>
+        </div>
+        <div class="progress-labels">
+          <span>0%</span>
+          <span>7.15% (111/1552 steps)</span>
+          <span>100%</span>
+        </div>
       </div>
     </div>
   </div>
